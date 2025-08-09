@@ -44,8 +44,22 @@ public class PlayerMovement : MonoBehaviour
     {
         // Отримуємо вхідні дані руху
         Vector2 moveInput = _moveAction.ReadValue<Vector2>();
+
+        // Зберігаємо оберти камери
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+
+        // Обнуляємо вертикальну складову (щоб персонаж не рухався вгору-вниз)
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        // Визначаємо напрямок руху врахувавши напрямок погляду камери
+        Vector3 horizontal = (right * moveInput.x + forward * moveInput.y).normalized;
+
         // Визначаємо напрямок руху на основі вхідних даних
-        Vector3 horizontal = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+        // Vector3 horizontal = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
         // Якщо була натиснута кнопка стрибка, викликаємо метод Jump
         if (_jumpAction.triggered)
