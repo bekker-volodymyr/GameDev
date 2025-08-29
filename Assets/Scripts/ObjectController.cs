@@ -7,10 +7,10 @@ public class ObjectController : MonoBehaviour
     [SerializeField]
     private Vector3 force;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start РІРёРєР»РёРєР°С”С‚СЊСЃСЏ РѕРґРёРЅ СЂР°Р· РїРµСЂРµРґ РїРµСЂС€РёРј РІРёРєРѕРЅР°РЅРЅСЏРј Update РїС–СЃР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ MonoBehaviour
     void Start()
     {
-        _rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
+        _rb = GetComponent<Rigidbody>(); // РћС‚СЂРёРјР°С‚Рё РєРѕРјРїРѕРЅРµРЅС‚ Rigidbody, РїСЂРёРєСЂС–РїР»РµРЅРёР№ РґРѕ С†СЊРѕРіРѕ GameObject
 
         //System.Random random = new System.Random();
         //random.Next();
@@ -18,21 +18,21 @@ public class ObjectController : MonoBehaviour
         //Vector3 force = new Vector3(x, y, z);
 
         // Vector3.up (0,1,0) * 5 = (0,5,0)
-         _rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-         _rb.AddTorque(Vector3.right * 4f, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        _rb.AddTorque(Vector3.right * 4f, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
+    // Update РІРёРєР»РёРєР°С”С‚СЊСЃСЏ РѕРґРёРЅ СЂР°Р· Р·Р° РєР°РґСЂ
     void Update()
     {
-        // Обробка введення від гравця, оновлення зображення та UI
+        // РћР±СЂРѕР±РєР° РІРІРµРґРµРЅРЅСЏ РІС–Рґ РіСЂР°РІС†СЏ, РѕРЅРѕРІР»РµРЅРЅСЏ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ С‚Р° UI
         //_rb.AddForce(force, ForceMode.Force);
     }
 
-    // FixedUpdate викликається 1 раз на фіксований інтервал (за замовченням 0.02 с = 50 разів/с)
+    // FixedUpdate РІРёРєР»РёРєР°С”С‚СЊСЃСЏ 1 СЂР°Р· РЅР° С„С–РєСЃРѕРІР°РЅРёР№ С–РЅС‚РµСЂРІР°Р» (Р·Р° Р·Р°РјРѕРІС‡СѓРІР°РЅРЅСЏРј 0.02 СЃ = 50 СЂР°Р·С–РІ/СЃ)
     private void FixedUpdate()
     {
-        // Оновлення фізики, позиції та обертів об'єкта
+        // РћРЅРѕРІР»РµРЅРЅСЏ С„С–Р·РёРєРё, РїРѕР·РёС†С–С— С‚Р° РѕР±РµСЂС‚С–РІ РѕР±'С”РєС‚Р°
         _rb.AddForce(force, ForceMode.Force);
     }
 }

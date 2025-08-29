@@ -1,19 +1,20 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SpecialMovingPlatform : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float speed = 5f; // Швидкість руху платформи
 
     [SerializeField]
-    private List<Vector3> waypoints;
+    private List<Vector3> waypoints; // Перелік точок в які платформа повинна рухатись
 
-    private Vector3 startPoint;
-    private int currentWaypointIndex = 0;
+    private Vector3 startPoint; // Стартова точка
+    private int currentWaypointIndex = 0; // Індекс точки в яку платформа рухається зараз
 
     void Start()
     {
+        // Зберігаємо стартову точку
         startPoint = transform.position;
 
         // Додаємо стартову позицію як початковий вейпойнт, якщо список порожній
@@ -25,6 +26,7 @@ public class SpecialMovingPlatform : MonoBehaviour
 
     void Update()
     {
+        // Якщо немає точок для руху - не виконуємо Update
         if (waypoints.Count == 0)
             return;
 
